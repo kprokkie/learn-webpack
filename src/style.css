@@ -1,0 +1,13 @@
+div {
+    background-color: #8470FF;
+    color: #F0FFFF;
+    font-family: 'calibri';
+}
+
+div h1 {
+    font-size: 2rem;
+}
+
+div p {
+    font-size: 1rem;
+}
