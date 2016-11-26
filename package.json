@@ -14,6 +14,8 @@
   "author": "Pradeep Kumar <kumarpradeep1010@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
     "webpack": "^1.13.3"
   },
   "dependencies": {
