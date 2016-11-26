@@ -1,4 +1,4 @@
 var $ = require('jquery');
 
-$('#target').html('hello webpack');
+$('#target').html('Hello Webpack !!');
 
