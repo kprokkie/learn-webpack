@@ -2,7 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 
 // To pull in all CSS files
-require('./style.css');
+require('./style.scss');
 
 class Message extends React.Component {
     render() {
