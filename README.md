@@ -202,8 +202,65 @@ Now, to use this we need to install style loader and CSS loader as dependencies.
 
 The final thing we need to do here is need to require the CSS right here in our javascript file **main.js**
 So, we will use require and then we're going to pull in the **style.css** file
-`require('./style.css');`
+`require('./style.scss');`
  
 We will run webpack again & we should notice that style has been applied. So that is how we add style using webpack and CSS loaders.
 
 Checkout Branch: https://github.com/kprokkie/learn-webpack/tree/WebpackCSS
+
+**Transpiling Sass**
+
+Webpack also a loader for Sass
+Let's change our our **style.css** to a **style.scss** file by renaming it down here. And then we are going to use some SCSS or SASS syntax to put together some variables. 
+
+`$background: #8470FF;
+$color: #F0FFFF;`
+
+We also need to make an alteration to our main JS file where we'll use SCSS instead of CSS as the file extension of the file that we want to import.
+`require('./style.scss');`
+
+Now, We need to install a couple more dependencies regarding SCSS or SASS. 
+`> npm install sass-loader node-sass --save-dev`
+
+Node-sass is a dependency and Sass loader won't work without it so we do need to install that to our dev dependencies as well. 
+
+`{
+    test: /\.scss$/,
+    loader: 'style-loader!css-loader!sass-loader'
+}`
+Update **webpack.config** file, we are going to load SCSS files and then we are going to chain on a sass-loader here which will enable us to make those Sass transformations.
+
+Run webpack we should see that bundled correctly and if we reload.
+Webpack also has a loader for LESS if that's your CSS framework of choice.
+
+Checkout Branch: https://github.com/kprokkie/learn-webpack/tree/WebpackSCSS
+
+<h3>Images with Webpack</h3>
+With webpack we load images by using URL loader. Webpack in-lines a URL to the image bundle and then returns it from require. 
+We wanna do this because in-lining images will reduce the number of HTTP requests which will speed up our applications a lot. 
+
+What I'll need to do to get started is just npm install url loader and file loader to our dev dependencies.
+`> npm install url-loader file-loader --save-dev`
+
+We have a background property of URL and then we'll pass in the name of our URL file. 
+`body {
+    background: url(bg.jpg);
+}`
+
+Update the webpack config file, and we're going to add another loader. 
+`{
+    test: /\.(jpg|png)$/,
+    loader: 'url-loader?limit=20000000'
+},`
+
+Now, this is going to have a test, so it's going to look for file extensions of a particular type. 
+In this case, we're going to test for png and jpg 
+So we'll just send in the names of these file extensions separated by a pipe here. 
+You can add as many here as you'd like to. 
+The next thing we're going to add is our loader i.e **url-loader**
+
+Let's go ahead and run webpack.
+We have this image being loaded. If we give it a right click to check out our developer tools we notice that this div now has this background property, 
+and it's this data image URI that's been created by webpack automatically just by using the URL loader. 
+
+Checkout Branch: https://github.com/kprokkie/learn-webpack/tree/WebpackIMG
