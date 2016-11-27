@@ -1,8 +1,11 @@
 $background: #8470FF;
 $color: #F0FFFF;
 
+body {
+    background: url(bg.jpg);
+}
+
 div {
-    background-color: $background;
     color: $color;
     font-family: 'calibri';
 }
