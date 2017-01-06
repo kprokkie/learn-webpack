@@ -1,8 +1,16 @@
+var webpack = require('webpack');
+var path = require('path');
+var CommonsChunkPlugin = require('./node_modules/webpack/lib/optimize/CommonsChunkPlugin');
+
 module.exports = {
-    entry: './src/main.js',
+    entry: {
+        about: './dist/about.js',
+        contact: './dist/contact.js',
+        vendor: ['react','react-dom']
+    },
     output: {
-        path: 'build',
-        filename: 'bundle.js'
+        path: path.join(__dirname, 'build'),
+        filename: '[name].bundle.js'
     },
     module: {
         loaders: [
@@ -15,5 +23,8 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new CommonsChunkPlugin('vendor','vendor.bundle.js')
+    ]
 };
